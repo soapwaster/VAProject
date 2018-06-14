@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+body {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.bar {
+  fill: orange;
+}
+
+.bar:hover {
+  fill: orangered ;
+}
+
+.x.axis path {
+  display: none;
+}
+
+div.tooltip {
+  position: absolute;
+  text-align: center;
+  width: 60px;
+  height: 28px;
+  padding: 2px;
+  font: 12px sans-serif;
+  background: lightsteelblue;
+  border: 0px;
+  border-radius: 8px;
+  pointer-events: none;
+}
+</style>
+<body>
+
+
+<script src="d3.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+<script src="vars.js"></script>
+<!--<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>-->
+<script>
+
+var margin = {top: 40, right: 20, bottom: 30, left: 40},
+    width = 960 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+    
+var selectedBarHeight = 0;
+
+
+var x = d3.scaleBand()
+    .range([0, width], .1);
+
+var y = d3.scaleLinear()
+    .range([height, 0]);
+
+var xAxis = d3.axisBottom(x)
+    //.scale(x)
+    //.orient("bottom");
+
+var yAxis = d3.axisLeft(y)
+    //.scale(y)
+    //.orient("left")
+    .tickFormat(d3.formatPrefix(".1", 1e3));
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    
+var div = d3.select("body").append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0);
+
+d3.csv("FDB/state_pair_month.csv", type, function(error, data) {
+    
+  dat = []
+  for(var el in data){
+      if(el%12 == 0)
+        dat.push(data[el])
+  }
+    
+  data = dat
+  x.domain(data.map(function(d) { return d.s; }));
+  y.domain([0, d3.max(data, function(d) { return d.n; })]);
+
+
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("# of flights");
+
+    
+  svg.selectAll(".bar")
+      .data(data)
+      .enter().append("rect")
+      .attr("class", "bar")
+      .attr("x", function(d) { return x(d.s); })
+      .attr("width", x.bandwidth)
+      .attr("y", function(d) { return y(d.n); })
+      .attr("height", function(d) { return height - y(d.n); })
+      .on("mouseover", function(d) {
+       div.transition()
+         .duration(200)
+         .style("opacity", .9);
+       div.html(d.n - selectedBarHeight)
+         .style("left", (d3.event.pageX) + "px")
+         .style("top", (d3.event.pageY - 28) + "px");
+       })
+     .on("mouseout", function(d) {
+       div.transition()
+         .duration(500)
+         .style("opacity", 0);
+       });
+
+});
+    
+function loadDataMonth(month){
+    
+    
+    svg.selectAll(".bar")
+       .each(function(d){
+        d.n = statesStats[jsonStates[d.s]][month]
+    })
+    
+}
+
+$(document).ready(function() {
+ $("rect").click(function(e){
+     
+    svg.selectAll("line").remove()
+    
+    var lineEnd = $(e.target).prop("height")
+    
+    lineEnd = height - lineEnd.baseVal.value
+    
+    selectedBarHeight = $(e.target).prop("__data__").n
+
+    var line = svg.append("line")
+      .attr("x1", 0)
+      .attr("x2", width)
+      .attr("y1", lineEnd)
+      .attr("y2", lineEnd)
+      .attr("stroke-width", 1)
+      .attr("stroke", "black")
+    
+})  
+    
+$("rect").mouseover(function(e){
+     
+    if(selectedBarHeight <= 0) return 
+    
+    var barVal = $(e.target).prop("__data__").n
+    
+    var theSelectedBarHeight = barVal - selectedBarHeight
+    
+    console.log(theSelectedBarHeight);
+    
+})   
+});
+    
+
+function type(d) {
+  d.n = +d.n;
+  return d;
+}
+
+</script>

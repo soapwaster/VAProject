@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="d3.js"></script>
+<script src="stdDev.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<style type="text/css">
+
+/* On mouse hover, lighten state color */
+path:hover {
+	fill-opacity: .7;
+    pointer-events: all;
+}
+
+div.tooltip {
+  position: absolute;
+  text-align: center;
+  width: 60px;
+  height: 28px;
+  padding: 2px;
+  font: 12px sans-serif;
+  background: lightsteelblue;
+  border: 0px;
+  border-radius: 8px;
+  pointer-events: none;
+}               
+        
+/* Legend Font Style */
+body {
+	font: 11px sans-serif;
+}
+        
+/* Legend Position Style */
+.legend {
+	position:absolute;
+	left:800px;
+	top:350px;
+}
+    
+    .axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.bar {
+  fill: orange;
+}
+
+.bar:hover {
+  fill: orangered ;
+}
+
+.x.axis path {
+  display: none;
+}
+
+</style>
+</head>
+<body>
+<div id="usa_div" style="display: inline-block">
+    <svg id="usa_svg"></svg>
+    <div id ="slider_div" style="width: 800px;">
+    <input style="width: 100%" type="range" min="1" max="12" value="6">
+</div>
+</div>
+<div id ="barchart_div" style="width: 850px;display: inline-block">
+    
+</div>
+<div>
+    <svg id="sgv_chord">
+    </svg>
+</div>
+    <script type="text/javascript" src="barchart.js"></script>
+    <script type="text/javascript" src="vars.js"></script>
+    <script type="text/javascript" src="script-usa.js"></script>
+</body>
+</html>
