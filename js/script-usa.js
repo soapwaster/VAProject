@@ -164,7 +164,7 @@ function switchTo(loa,n){
 }
 
 // Load GeoJSON data and merge with states data
-d3.json("us-states.json", function(json) {
+d3.json("js/us-states.json", function(json) {
 
     
 // Bind the data to the SVG and create one path per GeoJSON feature
