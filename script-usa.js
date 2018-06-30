@@ -78,6 +78,9 @@ $("#slider_div input").on("input", function(e){
 var virScale = ['#2166ac','#286db0','#2e74b4','#347cb7','#3983bb','#3e8bbf','#4292c3','#519ac7','#5ea2cb','#6baad0','#78b2d4','#84bbd8','#8fc3dd','#9ac9e0','#a5cee3','#afd3e6','#b9d9e9','#c3deec','#cde3ef','#d5e7f1','#dbeaf2','#e1edf3','#e8f0f4','#eef3f5','#f4f6f6','#f8f5f3','#f9f0eb','#faece3','#fbe7db','#fce2d4','#fddecc','#fdd8c3','#fccfb7','#fbc6ac','#f9bda1','#f8b495','#f6ac8a','#f3a280','#ee9777','#ea8c6e','#e58165','#e0765d','#db6a54','#d55f4c','#d05546','#ca4b41','#c4403b','#be3536','#b82830','#b2182b']
  
 var patty;
+var statesStats_leave = [];
+var statesStats_arrive = [];
+
 
 // Load in my states data!
 d3.csv("FDB/results.csv", function(data) {
@@ -93,22 +96,76 @@ d3.csv("FDB/results.csv", function(data) {
         // Grab data value 
         var dataValue = +data[i].NO;
 
-        if(statesStats[dataState] == null){
-            statesStats[dataState] = []
+        if(statesStats_leave[dataState] == null){
+            statesStats_leave[dataState] = []
         }
-        statesStats[dataState][dataMonth] = dataValue
+        statesStats_leave[dataState][dataMonth] = dataValue
+        
+         switchTo("leave",6)
+}
+});
+
+d3.csv("FDB/results_arrivi.csv", function(data) {
+    
+    for (var i = 0; i < data.length; i++) {
+
+        // Grab State Name
+        var dataState = jsonStates[data[i].ST];
+
+        // Grab Month Number
+        var dataMonth = +data[i].MO;
+
+        // Grab data value 
+        var dataValue = +data[i].NO;
+
+        if(statesStats_arrive[dataState] == null){
+            statesStats_arrive[dataState] = []
+        }
+        statesStats_arrive[dataState][dataMonth] = dataValue
         
 }
         
-    createStdDev()
 });
+
+function switchTo(loa,n){
+    if(loa == "leave"){
+        statesStats = statesStats_leave;
+        createStdDev()
+    }
+    else{
+        statesStats = statesStats_arrive;
+        createStdDev()
+    }
+    
+    //fill it
+    svg.selectAll("path")
+	.attr("d", path)
+	.style("stroke", "#fff")
+	.style("stroke-width", "1")
+	.style("fill", function(d) {
+            
+    color = d3.scale.quantize()
+          .domain([-2*stateStdDev[d.properties.name] , 2*stateStdDev[d.properties.name]])
+          .range(virScale)
+    if(statesStats[d.properties.name] == null) return "rgb(213,222,217)" 
+	// Get data value
+	var value = statesStats[d.properties.name][n] - (+stateMean[d.properties.name])
+	if (value) {
+	//If value exists…
+        if(n){  
+            return color(value)
+        }
+	return color(900);
+	} else {
+	//If value is undefined…
+	return "rgb(213,222,217)";
+	}
+});
+}
 
 // Load GeoJSON data and merge with states data
 d3.json("us-states.json", function(json) {
-    
-color = d3.scale.linear()
-          .domain([0, 64000])
-          .range(virScale);
+
     
 // Bind the data to the SVG and create one path per GeoJSON feature
 patty = svg.selectAll("path")
@@ -121,20 +178,8 @@ patty = svg.selectAll("path")
     .attr("d", path)
 	.style("stroke", "#fff")
 	.style("stroke-width", "1")
-	.style("fill", function(d) {
     
-    // Get data value
-	var value = d.properties.name
-    if(statesStats[value] == null) return "rgb(213,222,217)" 
-    value = statesStats[value][6]
-	if (value) {
-	//If value exists…
-	return color(value);
-	} else {
-	//If value is undefined…
-	return "rgb(213,222,217)";
-	}
-});
+     switchTo("leave",6)
 
 });
 // Modified Legend Code from Mike Bostock: http://bl.ocks.org/mbostock/3888852

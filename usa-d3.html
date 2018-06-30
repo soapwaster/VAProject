@@ -6,6 +6,7 @@
 <script src="d3.js"></script>
 <script src="stdDev.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/5.0.0/math.min.js"></script> 
 <style type="text/css">
 
 /* On mouse hover, lighten state color */
@@ -47,16 +48,13 @@ body {
 }
 
 .bar {
-  fill: orange;
+  fill: rgb(99, 148, 186);
 }
 
 .bar:hover {
-  fill: orangered ;
+  fill: rgb(202, 75, 65) ;
 }
 
-.x.axis path {
-  display: none;
-}
 
 </style>
 </head>
@@ -70,12 +68,11 @@ body {
 <div id ="barchart_div" style="width: 850px;display: inline-block">
     
 </div>
-<div>
-    <svg id="sgv_chord">
-    </svg>
+<div id="scatter-div" style="display: inline-block">
 </div>
     <script type="text/javascript" src="barchart.js"></script>
     <script type="text/javascript" src="vars.js"></script>
     <script type="text/javascript" src="script-usa.js"></script>
+    <script type="text/javascript" src="scatter.js"></script>
 </body>
 </html>

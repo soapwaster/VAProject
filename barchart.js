@@ -83,7 +83,12 @@ d3.csv("FDB/state_pair_month.csv", type, function(error, data) {
 function loadDataMonth(month){
     
     svgg.selectAll("line").remove()
-   
+    svgg.selectAll("rect")
+      .style("fill", function(d){
+        return "#6394ba"
+    })
+    
+    
     svgg.selectAll(".bar")
        .each(function(d){
         d.n = statesStats[jsonStates[d.s]][month]
@@ -110,6 +115,10 @@ $(document).ready(function() {
  $("rect").click(function(e){
      
     svgg.selectAll("line").remove()
+    svgg.selectAll("rect")
+      .style("fill", function(d){
+        return "#6394ba"
+    })
     
     var lineEnd = $(e.target).prop("height")
     
@@ -124,6 +133,11 @@ $(document).ready(function() {
       .attr("y2", lineEnd)
       .attr("stroke-width", 1)
       .attr("stroke", "black")
+    
+    d3.select(e.target)
+      .style("fill", function(d){
+        return "rgb(202, 75, 65)"
+    })
     
 })  
     
