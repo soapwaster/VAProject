@@ -5,7 +5,7 @@ var PCA_FILE = "FDB/pca_viz.tsv"
 d3version3.tsv(PCA_FILE, function(error, data) {
 	// Define the sizes and margins for our canvas.
 	var margin = {top: 20, right: 20, bottom: 30, left: 40},
-		width = 700 - margin.left - margin.right,
+		width = 780 - margin.left - margin.right,
     	height = 500 - margin.top - margin.bottom;
 		// Cast my values as numbers and determine ranges.
 	var minmax = {P1: {min:0, max:0}, P2: {min:0, max:0}}

@@ -1,5 +1,5 @@
 var bar_margin = {top: 40, right: 20, bottom: 30, left: 40},
-    bar_width = 850  - bar_margin.left - bar_margin.right,
+    bar_width = 800  - bar_margin.left - bar_margin.right,
     bar_height = 500 - bar_margin.top - bar_margin.bottom;
     
 var selectedBarHeight = 0;

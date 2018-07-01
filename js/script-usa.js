@@ -11,7 +11,7 @@ http://bl.ocks.org/mbostock/3888852  */
 
 		
 //Width and height of map
-var width = 850;
+var width = 700;
 var height = 500;
 
 // D3 Projection

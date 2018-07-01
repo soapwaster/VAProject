@@ -101,7 +101,7 @@ function set_scatter(){
     ]  
     
     var margin = {top: 20, right: 40, bottom: 30, left: 60},
-        width = 1450 - margin.left - margin.right,
+        width = 1300 - margin.left - margin.right,
         height = 350 - margin.top - margin.bottom;
 
     var x = d3version4.scaleLinear()
@@ -131,7 +131,7 @@ function set_scatter(){
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
     
-      var details = d3version4.select("body").append("div").style("display","inline-block").style("width","200px").style("height","300px").style("font-size","17.5px").attr("id","details").style("vertical-align","top").style("margin-top","30px").append("span")
+      var details = d3version4.select("#scatter-div").append("div").style("display","inline-block").style("width","200px").style("height","300px").style("font-size","17.5px").attr("id","details").style("vertical-align","top").style("margin-top","30px").append("span")
     
    
 
