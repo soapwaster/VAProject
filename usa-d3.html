@@ -1,77 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<script src="http://d3js.org/d3.v3.min.js"></script>
-<script src="js/d3.js"></script>
-<script src="js/stdDev.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/5.0.0/math.min.js"></script> 
-<style type="text/css">
-
-/* On mouse hover, lighten state color */
-path:hover {
-	fill-opacity: .7;
-    pointer-events: all;
-}
-
-div.tooltip {
-  position: absolute;
-  text-align: center;
-  width: 60px;
-  height: 28px;
-  padding: 2px;
-  font: 12px sans-serif;
-  background: lightsteelblue;
-  border: 0px;
-  border-radius: 8px;
-  pointer-events: none;
-}               
-        
-/* Legend Font Style */
-body {
-	font: 11px sans-serif;
-}
-        
-/* Legend Position Style */
-.legend {
-	position:absolute;
-	left:800px;
-	top:350px;
-}
-    
-.axis path,
-.axis line {
-  stroke: #000;
-  shape-rendering: crispEdges;
-}
-
-.bar {
-  fill: rgb(99, 148, 186);
-}
-
-.bar:hover {
-  fill: rgb(202, 75, 65) ;
-}
-
-
-</style>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="css/styles.css">
+	<script src="js/stdDev.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/5.0.0/math.min.js"></script> 
 </head>
+
 <body>
-<div id="usa_div" style="display: inline-block">
-    <svg id="usa_svg"></svg>
-    <div id ="slider_div" style="width: 800px;">
-    <input style="width: 100%" type="range" min="1" max="12" value="6">
-</div>
-</div>
-<div id ="barchart_div" style="width: 850px;display: inline-block">
-    
-</div>
-<div id="scatter-div" style="display: inline-block">
-</div>
-    <script type="text/javascript" src="js/barchart.js"></script>
-    <script type="text/javascript" src="js/vars.js"></script>
-    <script type="text/javascript" src="js/script-usa.js"></script>
-    <script type="text/javascript" src="js/scatter.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.10.0/d3.min.js"></script>
+	<script>
+		d3version4 = d3
+	    window.d3 = null
+	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+	<script>
+	    d3version3 = d3
+	    window.d3 = null
+	    // test it worked
+	    console.log('v3', d3version3.version)
+	    console.log('v4', d3version4.version)
+	</script>
+
+	<div>
+		<div id="usa_div" style="display: inline-block">
+		    <svg id="usa_svg"></svg>
+		    <div id ="slider_div" style="width: 800px;">
+		    	<input style="width: 100%" type="range" min="1" max="12" value="6">
+			</div>
+		</div>
+		<div id ="barchart_div" style="display: inline-block"></div>
+		<div id="scatter-div" style="display: inline-block"></div>
+		<div id="pca-div" style="display: inline-block"></div>
+		<div id="parallel-div" style="display: inline-block"></div>
+	</div>
+
+	<script type="text/javascript" src="js/barchart.js"></script>
+	<script type="text/javascript" src="js/vars.js"></script>
+	<script type="text/javascript" src="js/script-usa.js"></script>
+	<script type="text/javascript" src="js/scatter.js"></script>
+	<script type="text/javascript" src="js/pca_and_parallel.js"></script>
+
 </body>
 </html>

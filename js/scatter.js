@@ -12,7 +12,7 @@
             return
         }
         ddMonthsState[i] = []
-        d3.csv("FDB/deldist_"+i+".csv", function(data) {
+        d3version4.csv("FDB/deldist_"+i+".csv", function(data) {
             ddMonthsState[i] = []
             data.forEach(function(d){
                 state = d.ORIGIN_STATE_NM
@@ -104,20 +104,20 @@ function set_scatter(){
         width = 1450 - margin.left - margin.right,
         height = 350 - margin.top - margin.bottom;
 
-    var x = d3.scaleLinear()
+    var x = d3version4.scaleLinear()
         .range([0, width]);
 
-    var y = d3.scaleLinear()
+    var y = d3version4.scaleLinear()
         .range([height, 0]);
 
-    var color = d3.scaleQuantize()
+    var color = d3version4.scaleQuantize()
           .domain([(ddAll_min - ddAll_mean) / ddAll_std,((ddAll_max - ddAll_mean) / ddAll_std)-6.8]) .range(['#2166ac','#2368ad','#256aae','#276daf','#296fb1','#2b71b2','#2d73b3','#2f75b4','#3178b5','#327ab6','#347cb7','#367eb9','#3781ba','#3983bb','#3a85bc','#3c87bd','#3d8abe','#3f8cbf','#408ec1','#4190c2','#4393c3','#4795c4','#4c98c6','#519ac7','#559cc8','#599fca','#5da1cb','#61a4cc','#65a6ce','#69a9cf','#6dabd0','#71aed2','#75b0d3','#78b3d4','#7cb5d6','#7fb8d7','#83bad8','#87bdda','#8abfdb','#8ec2dc','#91c4de','#94c6df','#98c8e0','#9bc9e0','#9ecbe1','#a1cce2','#a5cee3','#a8d0e4','#abd1e5','#aed3e6','#b1d4e7','#b4d6e8','#b7d8e9','#bbd9e9','#bedbea','#c1dceb','#c4deec','#c7e0ed','#cae1ee','#cde3ef','#d0e4f0','#d2e6f0','#d4e6f1','#d6e7f1','#d8e8f1','#dae9f2','#dceaf2','#deebf2','#e0ecf3','#e1edf3','#e3eef3','#e5eef4','#e7eff4','#e9f0f4','#ebf1f5','#edf2f5','#eff3f5','#f0f4f6','#f2f5f6','#f4f6f6','#f6f7f7','#f7f6f6','#f8f5f3','#f8f4f1','#f8f2ef','#f9f1ec','#f9efea','#faeee7','#faede5','#faebe3','#fbeae0','#fbe8de','#fbe7db','#fbe6d9','#fce4d7','#fce3d4','#fce1d2','#fce0d0','#fddfcd','#fdddcb','#fddcc8','#fddac6','#fdd7c2','#fcd5bf','#fcd2bb','#fccfb8','#fccdb4','#fbcab1','#fbc7ad','#fac4aa','#fac2a6','#fabfa3','#f9bca0','#f9ba9c','#f8b799','#f8b495','#f7b292','#f6af8f','#f6ac8b','#f5aa88','#f5a785','#f4a481','#f2a17f','#f19d7c','#f09a79','#ee9776','#ed9374','#eb9071','#ea8d6e','#e8896c','#e78669','#e68266','#e47f64','#e27c61','#e1785f','#df755c','#de7159','#dc6e57','#db6a54','#d96752','#d7634f','#d6604d','#d45d4b','#d25a49','#d15747','#cf5446','#cd5144','#cb4e42','#ca4a41','#c8473f','#c6443d','#c4413b','#c23d3a','#c13a38','#bf3736','#bd3335','#bb2f33','#b92b31','#b82730','#b6222e','#b41e2d','#b2182b']);
-    var xAxis = d3.axisBottom(x).tickFormat(function(d, i) {
+    var xAxis = d3version4.axisBottom(x).tickFormat(function(d, i) {
       var inData = dataa2.filter(function (v) { return +v.sepalLength === d })
       return inData.length ? inData[0].name : d
     });
 
-    var yAxis = d3.axisLeft(y).tickFormat(function(d, i) {
+    var yAxis = d3version4.axisLeft(y).tickFormat(function(d, i) {
       var inData = dataa.filter(function (v) { return +v.sepalLength === d })
       return inData.length ? inData[0].name : d
     });
@@ -125,13 +125,13 @@ function set_scatter(){
     x.domain([-0.5,11]).nice();
     y.domain([-0.5,13]).nice();
 
-    var svg = d3.select("#scatter-div").append("div").style("display","inline-block").append("svg")
+    var svg = d3version4.select("#scatter-div").append("div").style("display","inline-block").append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
     
-      var details = d3.select("body").append("div").style("display","inline-block").style("width","200px").style("height","300px").style("font-size","17.5px").attr("id","details").style("vertical-align","top").style("margin-top","30px").append("span")
+      var details = d3version4.select("body").append("div").style("display","inline-block").style("width","200px").style("height","300px").style("font-size","17.5px").attr("id","details").style("vertical-align","top").style("margin-top","30px").append("span")
     
    
 
@@ -200,17 +200,17 @@ function set_scatter(){
     
             function highlightBrushedCircles() {
 
-                if (d3.event.selection != null) {
+                if (d3version4.event.selection != null) {
 
                     // revert circles to initial style
                     circles.attr("class", "dotdot");
 
-                    var brush_coords = d3.brushSelection(this);
+                    var brush_coords = d3version4.brushSelection(this);
 
                     // style brushed circles
                     circles.filter(function (){ 
-                               var cx = d3.select(this).attr("cx"),
-                                   cy = d3.select(this).attr("cy");
+                               var cx = d3version4.select(this).attr("cx"),
+                                   cy = d3version4.select(this).attr("cy");
 
                                return isBrushed(brush_coords, cx, cy);
                            })
@@ -222,13 +222,13 @@ function set_scatter(){
 
                 // disregard brushes w/o selections  
                 // ref: http://bl.ocks.org/mbostock/6232537
-                if (!d3.event.selection) return;
+                if (!d3version4.event.selection) return;
 
                 // programmed clearing of brush after mouse-up
                 // ref: https://github.com/d3/d3-brush/issues/10
-                d3.select(this).call(brush.move, null);
+                d3version4.select(this).call(brush.move, null);
 
-                var d_brushed =  d3.selectAll(".brushed").data();
+                var d_brushed =  d3version4.selectAll(".brushed").data();
                 // populate table if one or more elements is brushed
                 if (d_brushed.length > 0) {
                     s = 0
@@ -242,7 +242,7 @@ function set_scatter(){
                 }
             }
 
-            var brush = d3.brush()
+            var brush = d3version4.brush()
                           .on("brush", highlightBrushedCircles)
                           .on("end", displayTable); 
 

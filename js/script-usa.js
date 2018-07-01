@@ -11,16 +11,16 @@ http://bl.ocks.org/mbostock/3888852  */
 
 		
 //Width and height of map
-var width = 800;
+var width = 850;
 var height = 500;
 
 // D3 Projection
-var projection = d3.geo.albersUsa()
+var projection = d3version3.geo.albersUsa()
 				   .translate([width/2, height/2])    // translate to center of screen
 				   .scale([1000]);          // scale things down so see entire US
         
 // Define path generator
-var path = d3.geo.path()               // path generator that will convert GeoJSON to SVG paths
+var path = d3version3.geo.path()               // path generator that will convert GeoJSON to SVG paths
 		  	 .projection(projection);  // tell path generator to use albersUsa projection
 
 		
@@ -30,12 +30,12 @@ var color;
 var legendText = ["Cities Lived", "States Lived", "States Visited", "Nada"];
 
 //Create SVG element and append map to the SVG
-var svg = d3.select("#usa_div #usa_svg")
+var svg = d3version3.select("#usa_div #usa_svg")
 			.attr("width", width)
 			.attr("height", height);
 
 // Append Div for tooltip to SVG
-var div = d3.select("body")
+var div = d3version3.select("body")
 		    .append("div")   
     		.attr("class", "tooltip")               
     		.style("opacity", 0);
@@ -55,7 +55,7 @@ $("#slider_div input").on("input", function(e){
 	.style("stroke-width", "1")
 	.style("fill", function(d) {
         
-    color = d3.scale.quantize()
+    color = d3version3.scale.quantize()
           .domain([-2*stateStdDev[d.properties.name] , 2*stateStdDev[d.properties.name]])
           .range(virScale)
     if(statesStats[d.properties.name] == null) return "rgb(213,222,217)" 
@@ -83,7 +83,7 @@ var statesStats_arrive = [];
 
 
 // Load in my states data!
-d3.csv("FDB/results.csv", function(data) {
+d3version3.csv("FDB/results.csv", function(data) {
     
     for (var i = 0; i < data.length; i++) {
 
@@ -105,7 +105,7 @@ d3.csv("FDB/results.csv", function(data) {
 }
 });
 
-d3.csv("FDB/results_arrivi.csv", function(data) {
+d3version3.csv("FDB/results_arrivi.csv", function(data) {
     
     for (var i = 0; i < data.length; i++) {
 
@@ -144,7 +144,7 @@ function switchTo(loa,n){
 	.style("stroke-width", "1")
 	.style("fill", function(d) {
             
-    color = d3.scale.quantize()
+    color = d3version3.scale.quantize()
           .domain([-2*stateStdDev[d.properties.name] , 2*stateStdDev[d.properties.name]])
           .range(virScale)
     if(statesStats[d.properties.name] == null) return "rgb(213,222,217)" 
@@ -164,7 +164,7 @@ function switchTo(loa,n){
 }
 
 // Load GeoJSON data and merge with states data
-d3.json("js/us-states.json", function(json) {
+d3version3.json("js/us-states.json", function(json) {
 
     
 // Bind the data to the SVG and create one path per GeoJSON feature
@@ -183,7 +183,7 @@ patty = svg.selectAll("path")
 
 });
 // Modified Legend Code from Mike Bostock: http://bl.ocks.org/mbostock/3888852
-/*var legend = d3.select("body").append("svg")
+/*var legend = d3version3.select("body").append("svg")
       			.attr("class", "legend")
      			.attr("width", 140)
     			.attr("height", 200)
@@ -206,7 +206,7 @@ patty = svg.selectAll("path")
       	  .text(function(d) { return d; });*/
 
 var stateStateStats=[]
-d3.csv('FDB/results-pair.csv', function (data) {
+d3version3.csv('FDB/results-pair.csv', function (data) {
     for(var el in data){
         el = data[el]
         nameSt = el.origin + "-" + el.destination
@@ -216,7 +216,7 @@ d3.csv('FDB/results-pair.csv', function (data) {
 
 var stateMean=[]
 
-d3.csv('FDB/mean_annua.csv', function(data){
+d3version3.csv('FDB/mean_annua.csv', function(data){
     for(var el in data){
         el = data[el]
         stateMean[jsonStates[el.ST]] = +el.AVG

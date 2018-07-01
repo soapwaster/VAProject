@@ -4,30 +4,30 @@ var bar_margin = {top: 40, right: 20, bottom: 30, left: 40},
     
 var selectedBarHeight = 0;
 
-var bar_x = d3.scaleBand()
+var bar_x = d3version4.scaleBand()
     .range([0, bar_width], .1);
 
-var bar_y = d3.scaleLinear()
+var bar_y = d3version4.scaleLinear()
     .range([bar_height, 0]);
 
-var bar_xAxis = d3.axisBottom(bar_x)
+var bar_xAxis = d3version4.axisBottom(bar_x)
     //.scale(x)
     //.orient("bottom");
 
-var bar_yAxis = d3.axisLeft(bar_y)
-    .tickFormat(d3.formatPrefix(".1", 1e3));
+var bar_yAxis = d3version4.axisLeft(bar_y)
+    .tickFormat(d3version4.formatPrefix(".1", 1e3));
 
-var svgg = d3.select("#barchart_div").append("svg")
+var svgg = d3version4.select("#barchart_div").append("svg")
     .attr("width", bar_width + bar_margin.left + bar_margin.right)
     .attr("height", bar_height + bar_margin.top + bar_margin.bottom)
   .append("g")
     .attr("transform", "translate(" + bar_margin.left + "," + bar_margin.top + ")");
     
-var bar_div = d3.select("body").append("div")
+var bar_div = d3version4.select("body").append("div")
     .attr("class", "tooltip")
     .style("opacity", 0);
 
-d3.csv("FDB/state_pair_month.csv", type, function(error, data) {
+d3version4.csv("FDB/state_pair_month.csv", type, function(error, data) {
     
   dat = []
   for(var el in data){
@@ -37,7 +37,7 @@ d3.csv("FDB/state_pair_month.csv", type, function(error, data) {
     
   data = dat
   bar_x.domain(data.map(function(d) { return d.s; }));
-  bar_y.domain([0, d3.max(data, function(d) { return d.n; })]);
+  bar_y.domain([0, d3version4.max(data, function(d) { return d.n; })]);
 
 
   svgg.append("g")
@@ -69,8 +69,8 @@ d3.csv("FDB/state_pair_month.csv", type, function(error, data) {
          .duration(200)
          .style("opacity", .9);
        bar_div.html(d.n - selectedBarHeight)
-         .style("left", (d3.event.pageX) + "px")
-         .style("top", (d3.event.pageY - 28) + "px");
+         .style("left", (d3version4.event.pageX) + "px")
+         .style("top", (d3version4.event.pageY - 28) + "px");
        })
      .on("mouseout", function(d) {
        bar_div.transition()
@@ -100,8 +100,8 @@ function loadDataMonth(month){
          .duration(200)
          .style("opacity", .9);
        bar_div.html(d.n - selectedBarHeight)
-         .style("left", (d3.event.pageX) + "px")
-         .style("top", (d3.event.pageY - 28) + "px");
+         .style("left", (d3version4.event.pageX) + "px")
+         .style("top", (d3version4.event.pageY - 28) + "px");
        })
      .on("mouseout", function(d) {
        bar_div.transition()
@@ -134,7 +134,7 @@ $(document).ready(function() {
       .attr("stroke-width", 1)
       .attr("stroke", "black")
     
-    d3.select(e.target)
+    d3version4.select(e.target)
       .style("fill", function(d){
         return "rgb(202, 75, 65)"
     })
