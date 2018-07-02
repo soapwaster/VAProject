@@ -1,18 +1,63 @@
-/*  This visualization was made possible by modifying code provided by:
 
-Scott Murray, Choropleth example from "Interactive Data Visualization for the Web" 
-https://github.com/alignedleft/d3-book/blob/master/chapter_12/05_choropleth.html   
-		
-Malcolm Maclean, tooltips example tutorial
-http://www.d3noob.org/2013/01/adding-tooltips-to-d3js-graph.html
-
-Mike Bostock, Pie Chart Legend
-http://bl.ocks.org/mbostock/3888852  */
-
-		
 //Width and height of map
-var width = 700;
+var width = 750;
 var height = 500;
+
+
+/*********** SLIDER ***********/
+
+var months_names = [
+		'January', 'February', 'March', 'April', 'May',
+		'June', 'July', 'August', 'September',
+		'October', 'November', 'December'
+	];
+
+  var slider3 = d3version4.sliderHorizontal()
+    .min(1)
+    .max(12)
+    .step(1)
+    .width(650)
+	.tickFormat(function(v) { return months_names[v-1]; })
+    .on('onchange', month => {
+	    //load month data
+	    selectedBarHeight = 0
+	    loadDataMonth(month) //e.target.value)
+    	console.log(month)
+	    //fill it
+	    svg.selectAll("path")
+		.attr("d", path)
+		.style("stroke", "#fff")
+		.style("stroke-width", "1")
+		.style("fill", function(d) {
+        
+		    color = d3version3.scale.quantize()
+		          .domain([-2*stateStdDev[d.properties.name] , 2*stateStdDev[d.properties.name]])
+		          .range(virScale)
+		    if(statesStats[d.properties.name] == null) return "rgb(213,222,217)" 
+			// Get data value
+			var value = statesStats[d.properties.name][month] - (+stateMean[d.properties.name])
+			if (value) {
+			    //If value exists…
+		        if(n){  
+		            return color(value)
+		        }
+				return color(900);
+			} else {
+				//If value is undefined…
+				return "rgb(213,222,217)";
+			}
+		});
+    });
+
+  var g = d3version4.select("#slider_div").append("svg")
+    .attr("width", width)
+    .attr("height", 100)
+    .append("g")
+    .attr("transform", "translate(30,30)");
+  g.call(slider3);
+
+/******************************/
+
 
 // D3 Projection
 var projection = d3version3.geo.albersUsa()

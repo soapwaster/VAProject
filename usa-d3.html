@@ -5,7 +5,8 @@
 	<link rel="stylesheet" href="css/styles.css">
 	<script src="js/stdDev.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/5.0.0/math.min.js"></script> 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/5.0.0/math.min.js"></script>
+	<script src="https://unpkg.com/d3-simple-slider@0.2.1/build/d3-simple-slider.js"></script>
 </head>
 
 <body>
@@ -24,16 +25,16 @@
 	</script>
 
 	<div>
-		<div id="usa_div" style="display: inline-block">
+		<div id="usa_div" style="display: inline-block; padding: 10px">
 		    <svg id="usa_svg"></svg>
 		    <div id ="slider_div" style="width: 700px;">
-		    	<input style="width: 100%" type="range" min="1" max="12" value="6">
+		    	<!-- input style="width: 100%" type="range" min="1" max="12" value="6" -->
 			</div>
 		</div>
-		<div id ="barchart_div" style="display: inline-block"></div>
+		<div id ="barchart_div" style="display: inline-block; padding: 0px 10px 10px 20px; vertical-align: top"></div>
 		<div id="scatter-div" style="display: inline-block"></div>
-		<div id="pca-div" style="display: inline-block"></div>
-		<div id="parallel-div" style="display: inline-block"></div>
+		<div id="pca-div" style="display: inline-block; padding-top: 10px"></div>
+		<div id="parallel-div" style="display: inline-block; padding-top: 10px"></div>
 	</div>
 
 	<script type="text/javascript" src="js/barchart.js"></script>
