@@ -86,22 +86,23 @@ function set_scatter(){
   
     var dataa2 =[
   {sepalLength: "-1", sepalWidth: 3.5, name: "0"},
-  {sepalLength: "0", sepalWidth: 3.5, name: "[<250]"},
-  {sepalLength: "1", sepalWidth: 3.0, name: "[250,499]"},
-  {sepalLength: "2", sepalWidth: 2.5, name: "[500,749]"},
-  {sepalLength: "3", sepalWidth: 2.0, name: "[750,999]"},
-  {sepalLength: "4", sepalWidth: 1.5, name: "[1000,1249]"},
-  {sepalLength: "5", sepalWidth: 1.5, name: "[1250,1499]"},
-  {sepalLength: "6", sepalWidth: 1.0, name: "[1500,1749]"},
-  {sepalLength: "7", sepalWidth: 1.0, name: "[1750,1999]"},
-  {sepalLength: "8", sepalWidth: 1.0, name: "[2000,2249]"},
-  {sepalLength: "9", sepalWidth: 1.0, name: "[2250,2499]"},
-  {sepalLength: "10", sepalWidth: 1.0, name: "[2500+]"},
-  {sepalLength: "11", sepalWidth: 1.0, name: "Distance (miles)"},
+  {sepalLength: "0", sepalWidth: 3.5, name: "[<0.25]"},
+  {sepalLength: "1", sepalWidth: 3.0, name: "[0.2,0.4]"},
+  {sepalLength: "2", sepalWidth: 2.5, name: "[0.5,0.7]"},
+  {sepalLength: "3", sepalWidth: 2.0, name: "[0.7,0.9]"},
+  {sepalLength: "4", sepalWidth: 1.5, name: "[1,1.2]"},
+  {sepalLength: "5", sepalWidth: 1.5, name: "[1.2,1.4]"},
+  {sepalLength: "6", sepalWidth: 1.0, name: "[1.5,17]"},
+  {sepalLength: "7", sepalWidth: 1.0, name: "[1.7,1.9]"},
+  {sepalLength: "8", sepalWidth: 1.0, name: "[2,2.2]"},
+  {sepalLength: "9", sepalWidth: 1.0, name: "[2.2,2.4]"},
+  {sepalLength: "10", sepalWidth: 1.0, name: "[2.5+]"},
+  {sepalLength: "11", sepalWidth: 1.0, name: ""},
+  {sepalLength: "12", sepalWidth: 1.0, name: "Distance (x1000 miles)"},
     ]  
     
     var margin = {top: 20, right: 40, bottom: 30, left: 60},
-        width = 900 - margin.left - margin.right,
+        width = 550 - margin.left - margin.right,
         height = 350 - margin.top - margin.bottom;
 
     var x = d3version4.scaleLinear()
@@ -111,7 +112,7 @@ function set_scatter(){
         .range([height, 0]);
 
     var color = d3version4.scaleQuantize()
-          .domain([(ddAll_min - ddAll_mean) / ddAll_std,((ddAll_max - ddAll_mean) / ddAll_std)-6.8]) .range(['#2166ac','#2368ad','#256aae','#276daf','#296fb1','#2b71b2','#2d73b3','#2f75b4','#3178b5','#327ab6','#347cb7','#367eb9','#3781ba','#3983bb','#3a85bc','#3c87bd','#3d8abe','#3f8cbf','#408ec1','#4190c2','#4393c3','#4795c4','#4c98c6','#519ac7','#559cc8','#599fca','#5da1cb','#61a4cc','#65a6ce','#69a9cf','#6dabd0','#71aed2','#75b0d3','#78b3d4','#7cb5d6','#7fb8d7','#83bad8','#87bdda','#8abfdb','#8ec2dc','#91c4de','#94c6df','#98c8e0','#9bc9e0','#9ecbe1','#a1cce2','#a5cee3','#a8d0e4','#abd1e5','#aed3e6','#b1d4e7','#b4d6e8','#b7d8e9','#bbd9e9','#bedbea','#c1dceb','#c4deec','#c7e0ed','#cae1ee','#cde3ef','#d0e4f0','#d2e6f0','#d4e6f1','#d6e7f1','#d8e8f1','#dae9f2','#dceaf2','#deebf2','#e0ecf3','#e1edf3','#e3eef3','#e5eef4','#e7eff4','#e9f0f4','#ebf1f5','#edf2f5','#eff3f5','#f0f4f6','#f2f5f6','#f4f6f6','#f6f7f7','#f7f6f6','#f8f5f3','#f8f4f1','#f8f2ef','#f9f1ec','#f9efea','#faeee7','#faede5','#faebe3','#fbeae0','#fbe8de','#fbe7db','#fbe6d9','#fce4d7','#fce3d4','#fce1d2','#fce0d0','#fddfcd','#fdddcb','#fddcc8','#fddac6','#fdd7c2','#fcd5bf','#fcd2bb','#fccfb8','#fccdb4','#fbcab1','#fbc7ad','#fac4aa','#fac2a6','#fabfa3','#f9bca0','#f9ba9c','#f8b799','#f8b495','#f7b292','#f6af8f','#f6ac8b','#f5aa88','#f5a785','#f4a481','#f2a17f','#f19d7c','#f09a79','#ee9776','#ed9374','#eb9071','#ea8d6e','#e8896c','#e78669','#e68266','#e47f64','#e27c61','#e1785f','#df755c','#de7159','#dc6e57','#db6a54','#d96752','#d7634f','#d6604d','#d45d4b','#d25a49','#d15747','#cf5446','#cd5144','#cb4e42','#ca4a41','#c8473f','#c6443d','#c4413b','#c23d3a','#c13a38','#bf3736','#bd3335','#bb2f33','#b92b31','#b82730','#b6222e','#b41e2d','#b2182b']);
+          .domain([(ddAll_min - ddAll_mean) / ddAll_std,((ddAll_max - ddAll_mean) / ddAll_std)-6.8]) .range(['#91c1db','#88b9d7','#7eb2d3','#75aacf','#6aa3cb','#609cc7','#5594c4','#498dc0','#3c86bc','#2c7fb8','#2b74a7','#2a6997','#285e86','#265377','#244967','#213f58','#1e3549','#1a2b3b','#16222e','#121921','#0b0f14','#000000']);
     var xAxis = d3version4.axisBottom(x).tickFormat(function(d, i) {
       var inData = dataa2.filter(function (v) { return +v.sepalLength === d })
       return inData.length ? inData[0].name : d
@@ -122,7 +123,7 @@ function set_scatter(){
       return inData.length ? inData[0].name : d
     });
     
-    x.domain([-0.5,11]).nice();
+    x.domain([-0.5,12]).nice();
     y.domain([-0.5,13]).nice();
 
     var svg = d3version4.select("#scatter-div").append("div").style("display","inline-block").append("svg")
@@ -171,7 +172,7 @@ function set_scatter(){
           .attr("y", 5)
           .attr("dy", ".35em")
           .style("text-anchor", "end")
-          .text(function(d) { if(d==-0.27){return "low"} else if(d == 0.5){return "high"} return ""});
+          .text(function(d) { if(d==-0.27){return ddAll_min} else if(d == 0.5){return ddAll_max} else if(d == 0){return math.round(ddAll_mean)}return ""});
     //--------------------------------------------------------------------------------------------
     
           svg.append("g").attr("class", "dot_wrapper")
@@ -189,7 +190,7 @@ function set_scatter(){
           .enter()
           .append("circle")
           .attr("class", "dotdot")
-          .attr("r", 4.5)
+          .attr("r", 7)
                 .attr("cx", function(d,i) { 
                                     if(i == 0){
                                         j_inc++;
@@ -208,7 +209,7 @@ function set_scatter(){
 
                     // revert circles to initial style
                     circles.attr("class", "dotdot");
-                    circles.attr("r", 4.5);
+                    circles.attr("r", 7);
 
                     var brush_coords = d3version4.brushSelection(this);
 
@@ -234,7 +235,7 @@ function set_scatter(){
                 d3version4.select(this).call(brush.move, null);
 
                 var d_brushed =  d3version4.selectAll(".brushed").data();
-                d3version4.selectAll(".brushed").attr("r",7);
+                d3version4.selectAll(".brushed").attr("r",10);
                 // populate table if one or more elements is brushed
                 if (d_brushed.length > 0) {
                     s = 0

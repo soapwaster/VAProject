@@ -146,7 +146,7 @@ d3version3.csv("FDB/results.csv", function(data) {
         }
         statesStats_leave[dataState][dataMonth] = dataValue
         
-         switchTo("leave",6)
+        switchTo("leave",6)
 }
 });
 
@@ -225,6 +225,8 @@ patty = svg.selectAll("path")
 	.style("stroke-width", "1")
     
      switchTo("leave",6)
+    
+    
 
 });
 // Modified Legend Code from Mike Bostock: http://bl.ocks.org/mbostock/3888852
