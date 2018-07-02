@@ -35,7 +35,7 @@ data_frame = pd.read_csv("FDB/1k-flights.csv")
 
 features = ["ARR_DELAY_NEW","DEP_DELAY_NEW", "AIR_TIME", "DISTANCE", 
             "CARRIER_DELAY", "NAS_DELAY",
-            "LATE_AIRCRAFT_DELAY"]
+            "LATE_AIRCRAFT_DELAY", "ORIGIN_STATE_ABR"]
 
 df = data_frame.loc[:, features]
 
@@ -62,5 +62,5 @@ print(df.head())
 with open("FDB/1k-6num-attrs.csv", "w") as f:
     df.to_csv(f, index=False, columns=features)
     
-save_pca(df)
+save_pca(df.loc[:, features[:-1]])
 
