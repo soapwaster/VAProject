@@ -204,6 +204,7 @@ function set_scatter(){
 
                     // revert circles to initial style
                     circles.attr("class", "dotdot");
+                    circles.attr("r", 4.5);
 
                     var brush_coords = d3version4.brushSelection(this);
 
@@ -229,6 +230,7 @@ function set_scatter(){
                 d3version4.select(this).call(brush.move, null);
 
                 var d_brushed =  d3version4.selectAll(".brushed").data();
+                d3version4.selectAll(".brushed").attr("r",7);
                 // populate table if one or more elements is brushed
                 if (d_brushed.length > 0) {
                     s = 0
