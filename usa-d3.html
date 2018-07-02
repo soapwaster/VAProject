@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<title>USA Flights</title>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	<link rel="stylesheet" href="css/styles.css">
 	<script src="js/stdDev.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -9,7 +13,7 @@
 	<script src="https://unpkg.com/d3-simple-slider@0.2.1/build/d3-simple-slider.js"></script>
 </head>
 
-<body>
+<body class="is-preload">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.10.0/d3.min.js"></script>
 	<script>
 		d3version4 = d3
@@ -23,25 +27,48 @@
 	    console.log('v3', d3version3.version)
 	    console.log('v4', d3version4.version)
 	</script>
-    <div><h1>Visual Analytics - Final Project</h1></div>
-	<div>
-		<div id="usa_div" style="display: inline-block; padding: 10px">
-		    <svg id="usa_svg"></svg>
-		    <div id ="slider_div" style="width: 700px;">
-		    	<!-- input style="width: 100%" type="range" min="1" max="12" value="6" -->
-			</div>
+
+	<section id="header">
+		<div class="inner">
+			<span class="icon major fa-plane"></span>
+			<h1><strong>Flights And Delays in the United States</strong></h1>
 		</div>
-		<div id ="barchart_div" style="display: inline-block; padding: 0px 10px 10px 20px; vertical-align: top"></div>
-		<div id="scatter-div" style="display: inline-block"></div>
-		<div id="pca-div" style="display: inline-block; padding-top: 10px"></div>
-		<div id="parallel-div" style="display: inline-block; padding-top: 10px"></div>
-	</div>
+	</section>
+
+	<section id="one" class="main style1">
+		<div>
+			<div id="usa_div" style="display: inline-block; padding-left: 24px">
+			    <svg id="usa_svg"></svg>
+			    <div id ="slider_div" style="width: 700px;">
+			    	<!-- input style="width: 100%" type="range" min="1" max="12" value="6" -->
+				</div>
+			</div>
+			<div id ="barchart_div" style="display: inline-block; padding: 0px 10px 10px 20px; vertical-align: top"></div>
+			<div id="scatter-div" style="display: inline-block; padding-left: 24px"></div>
+			<div id="pca-div" style="display: inline-block; padding-top: 10px"></div>
+			<div id="parallel-div" style="display: inline-block; padding-top: 10px"></div>
+		</div>
+	</section>
+	
+	<section id="footer">
+		<ul class="copyright">
+			<li>&copy; Valerio Colitta - Davide Spallaccini</li>
+			<li>Code: <a href="https://github.com/soapwaster/VAProject.git">GitHub</a></li>
+		</ul>
+	</section>
 
 	<script type="text/javascript" src="js/barchart.js"></script>
 	<script type="text/javascript" src="js/vars.js"></script>
 	<script type="text/javascript" src="js/script-usa.js"></script>
 	<script type="text/javascript" src="js/scatter.js"></script>
 	<script type="text/javascript" src="js/pca_and_parallel.js"></script>
+	
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
 
 </body>
 </html>
