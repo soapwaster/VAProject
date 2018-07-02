@@ -86,10 +86,10 @@ function set_scatter(){
   
     var dataa2 =[
   {sepalLength: "-1", sepalWidth: 3.5, name: "0"},
-  {sepalLength: "0", sepalWidth: 3.5, name: "[<0.25]"},
-  {sepalLength: "1", sepalWidth: 3.0, name: "[0.2,0.4]"},
-  {sepalLength: "2", sepalWidth: 2.5, name: "[0.5,0.7]"},
-  {sepalLength: "3", sepalWidth: 2.0, name: "[0.7,0.9]"},
+  {sepalLength: "0", sepalWidth: 3.5, name: "[<.25]"},
+  {sepalLength: "1", sepalWidth: 3.0, name: "[.2,.4]"},
+  {sepalLength: "2", sepalWidth: 2.5, name: "[.5,.7]"},
+  {sepalLength: "3", sepalWidth: 2.0, name: "[.7,.9]"},
   {sepalLength: "4", sepalWidth: 1.5, name: "[1,1.2]"},
   {sepalLength: "5", sepalWidth: 1.5, name: "[1.2,1.4]"},
   {sepalLength: "6", sepalWidth: 1.0, name: "[1.5,17]"},
@@ -103,7 +103,7 @@ function set_scatter(){
     
     var margin = {top: 20, right: 40, bottom: 30, left: 60},
         width = 550 - margin.left - margin.right,
-        height = 350 - margin.top - margin.bottom;
+        height = 360 - margin.top - margin.bottom;
 
     var x = d3version4.scaleLinear()
         .range([0, width]);
@@ -132,7 +132,7 @@ function set_scatter(){
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
     
-      var details = d3version4.select("#scatter-div").append("div").style("display","inline-block").style("width","200px").style("height","300px").style("font-size","17.5px").attr("id","details").style("vertical-align","top").style("margin-top","30px").append("span")
+      var details = d3version4.select("#scatter-div").append("div").style("display","inline-block").style("width","100px").style("height","300px").style("font-size","14px").attr("id","details").style("vertical-align","top").style("margin-top","30px").append("span")
     
    
 
@@ -140,6 +140,7 @@ function set_scatter(){
           .attr("class", "x axis")
           .attr("transform", "translate(0," + height + ")")
           .call(xAxis)
+         .selectAll("text")
     
    // text label for the x axis
 /*  svg.append("text")             
@@ -162,13 +163,13 @@ function set_scatter(){
           .attr("transform", function(d, i) { return "translate(0," + i * 10 + ")"; });
 
       legend.append("rect")
-          .attr("x", width - 8)
+          .attr("x", width )
           .attr("width", 10)
           .attr("height", 10)
           .style("fill", color);
 
       legend.append("text")
-          .attr("x", width - 24)
+          .attr("x", width - 10)
           .attr("y", 5)
           .attr("dy", ".35em")
           .style("text-anchor", "end")

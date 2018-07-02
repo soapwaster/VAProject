@@ -1,7 +1,7 @@
 
 //Width and height of map
-var width = 750;
-var height = 500;
+var width = 600;
+var height = 400;
 
 
 /*********** SLIDER ***********/
@@ -16,7 +16,7 @@ var months_names = [
     .min(1)
     .max(12)
     .step(1)
-    .width(650)
+    .width(500)
 	.tickFormat(function(v) { return months_names[v-1]; })
     .on('onchange', month => {
 	    //load month data
@@ -62,7 +62,7 @@ var months_names = [
 // D3 Projection
 var projection = d3version3.geo.albersUsa()
 				   .translate([width/2, height/2])    // translate to center of screen
-				   .scale([1000]);          // scale things down so see entire US
+				   .scale([800]);          // scale things down so see entire US
         
 // Define path generator
 var path = d3version3.geo.path()               // path generator that will convert GeoJSON to SVG paths
@@ -229,6 +229,8 @@ patty = svg.selectAll("path")
     
 
 });
+
+
 // Modified Legend Code from Mike Bostock: http://bl.ocks.org/mbostock/3888852
 /*var legend = d3version3.select("body").append("svg")
       			.attr("class", "legend")
