@@ -139,7 +139,7 @@ d3version3.csv(PARALLEL_COORDINATES_FILE, function(error, flights) {
 
 	// Extract the list of dimensions and create a scale for each.
 	x.domain(dimensions = d3version3.keys(flights[0]).filter(function(d) {
-		return d != "name" && (y[d] = d3version3.scale.linear()
+		return d != "ORIGIN_STATE_ABR" && (y[d] = d3version3.scale.linear()
 		.domain(d3version3.extent(flights, function(p) { return +p[d]; }))
 		.range([height, 0]));
 	}));

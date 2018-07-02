@@ -3,6 +3,7 @@
 var width = 600;
 var height = 400;
 
+//
 
 /*********** SLIDER ***********/
 
@@ -235,9 +236,25 @@ patty = svg.selectAll("path")
 
 });
 
+var selected = [];
+for(i in jsonStates){
+    selected[jsonStates[i]] = false
+}
+
 function handleMouseOver(e){
     //var gto = d3version3.selectAll(".bar").filter(function(d){ return jsonStates[d.s] == e.properties.name }).style("fill","black")
-
+    if(selected[e.properties.name]){
+        var par_state = d3version4.selectAll("#parallel-div path").filter(function(d){ return jsonStates[d.ORIGIN_STATE_ABR] == e.properties.name }).attr("class","foreground")
+        selected[e.properties.name] = false
+    }
+    else{
+        d3version4.selectAll("#parallel-div path").attr("class","foreground")
+        for(i in jsonStates){
+            selected[jsonStates[i]] = false
+        }   
+        var par_state = d3version4.selectAll("#parallel-div path").filter(function(d){ return jsonStates[d.ORIGIN_STATE_ABR] == e.properties.name }).attr("class","foregrounding")
+        selected[e.properties.name] = true
+    }
     
 }
 // Modified Legend Code from Mike Bostock: http://bl.ocks.org/mbostock/3888852
