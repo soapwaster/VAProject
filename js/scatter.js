@@ -155,7 +155,7 @@ function set_scatter(){
     //Legend style
 
     var legend = svg.selectAll(".legend")
-          .data([-0.27, -0.20, -0.1, -0.05, 0, 0.05, 0.1, 0.4, 0.5])
+          .data([-0.27, -0.20, -0.1, -0.05, 0, 0.05, 0.1, 0.2, 0.5])
           .enter().append("g")
           .attr("class", "legend")
           .attr("transform", function(d, i) { return "translate(0," + i * 10 + ")"; });
@@ -168,7 +168,7 @@ function set_scatter(){
 
       legend.append("text")
           .attr("x", width - 24)
-          .attr("y", 9)
+          .attr("y", 5)
           .attr("dy", ".35em")
           .style("text-anchor", "end")
           .text(function(d) { if(d==-0.27){return "low"} else if(d == 0.5){return "high"} return ""});
