@@ -227,12 +227,19 @@ patty = svg.selectAll("path")
     .attr("d", path)
 	.style("stroke", "#fff")
 	.style("stroke-width", "1")
+    .on("click", handleMouseOver)
     
      switchTo("leave",6)
+    
+    
 
 });
 
+function handleMouseOver(e){
+    //var gto = d3version3.selectAll(".bar").filter(function(d){ return jsonStates[d.s] == e.properties.name }).style("fill","black")
 
+    
+}
 // Modified Legend Code from Mike Bostock: http://bl.ocks.org/mbostock/3888852
 /*var legend = d3version3.select("body").append("svg")
       			.attr("class", "legend")
