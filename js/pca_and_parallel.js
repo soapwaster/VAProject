@@ -84,6 +84,33 @@ d3version3.tsv(PCA_FILE, function(error, data) {
 		.attr("r", 3.5)
 		.attr("cx", function(d) { return x(d.P1); })
 		.attr("cy", function(d) { return y(d.P2); });
+    
+        //Legend style
+        var colorz = d3version4.scaleOrdinal()
+                  .domain([1,2,3])
+                  .range(["blue","green","yellow"])
+
+        var legend = svg.selectAll(".legend")
+              .data([1,2,3])
+              .enter().append("g")
+              .attr("class", "legend")
+              .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+          legend.append("rect")
+              .attr("x", width )
+              .attr("width", 15)
+              .attr("height", 15)
+              .style("fill", colorz);
+
+          legend.append("text")
+              .attr("x", width - 10)
+              .attr("y", 5)
+              .attr("dy", ".35em")
+              .style("text-anchor", "end")
+              .text(function(d) { if(d==1){return "Arrival delay"} else if(d == 2){return "Departure delay"} else if(d == 3){return "Arr/Dep delay"}return ""});
+
+        //--------------------------------------------------------------------------------------------
+
 
 });
 
