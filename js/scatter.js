@@ -102,7 +102,7 @@ function set_scatter(){
     ]  
     
     var margin = {top: 20, right: 40, bottom: 30, left: 60},
-        width = 550 - margin.left - margin.right,
+        width = 1000 - margin.left - margin.right,
         height = 350 - margin.top - margin.bottom;
 
     var x = d3version4.scaleLinear()
@@ -152,7 +152,7 @@ function set_scatter(){
     svg.append("g")
           .attr("class", "y axis")
           .call(yAxis)
-          .text(function(d) { if(d==-0.27){return ddAll_min} else if(d == 0.5){return ddAll_max} else if(d == 0){return math.round(ddAll_mean)}return ""});
+          //.text(function(d) { if(d==-0.27){return ddAll_min} else if(d == 0.5){return ddAll_max} else if(d == 0){return math.round(ddAll_mean)}return ""});
     //--------------------------------------------------------------------------------------------
 
           svg.append("g").attr("class", "dot_wrapper")
