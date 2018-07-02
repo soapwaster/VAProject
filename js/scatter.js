@@ -151,17 +151,19 @@ function set_scatter(){
     svg.append("g")
           .attr("class", "y axis")
           .call(yAxis)
+                
+    //Legend style
 
-   /* var legend = svg.selectAll(".legend")
-          .data(color.domain())
+    var legend = svg.selectAll(".legend")
+          .data([-0.27, -0.20, -0.1, -0.05, 0, 0.05, 0.1, 0.4, 0.5])
           .enter().append("g")
           .attr("class", "legend")
-          .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+          .attr("transform", function(d, i) { return "translate(0," + i * 10 + ")"; });
 
       legend.append("rect")
-          .attr("x", width - 18)
-          .attr("width", 18)
-          .attr("height", 18)
+          .attr("x", width - 8)
+          .attr("width", 10)
+          .attr("height", 10)
           .style("fill", color);
 
       legend.append("text")
@@ -169,7 +171,9 @@ function set_scatter(){
           .attr("y", 9)
           .attr("dy", ".35em")
           .style("text-anchor", "end")
-          .text(function(d) { return d; });*/
+          .text(function(d) { if(d==-0.27){return "low"} else if(d == 0.5){return "high"} return ""});
+    //--------------------------------------------------------------------------------------------
+    
           svg.append("g").attr("class", "dot_wrapper")
        f = svg.select(".dot_wrapper")
        v = f.selectAll(".dot")
