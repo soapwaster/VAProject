@@ -75,10 +75,14 @@ var color;
 var legendText = ["Cities Lived", "States Lived", "States Visited", "Nada"];
 
 //Create SVG element and append map to the SVG
-var svg = d3version3.select("#usa_div #usa_svg")
+var usa_div = d3version3.select("#usa_div")
 			.attr("width", width)
 			.attr("height", height);
 
+var svg = d3version3.select("#usa_svg")
+			.attr("width", width)
+			.attr("height", height)
+			.append("g");
 // Append Div for tooltip to SVG
 var div = d3version3.select("body")
 		    .append("div")   
@@ -146,7 +150,7 @@ d3version3.csv("FDB/results.csv", function(data) {
         }
         statesStats_leave[dataState][dataMonth] = dataValue
         
-        switchTo("leave",6)
+         switchTo("leave",6)
 }
 });
 
@@ -225,8 +229,6 @@ patty = svg.selectAll("path")
 	.style("stroke-width", "1")
     
      switchTo("leave",6)
-    
-    
 
 });
 

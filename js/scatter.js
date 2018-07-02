@@ -102,8 +102,13 @@ function set_scatter(){
     ]  
     
     var margin = {top: 20, right: 40, bottom: 30, left: 60},
+<<<<<<< HEAD
         width = 550 - margin.left - margin.right,
         height = 360 - margin.top - margin.bottom;
+=======
+        width = 1000 - margin.left - margin.right,
+        height = 350 - margin.top - margin.bottom;
+>>>>>>> edb5080fa1c6bec7ac3e495ed261378ec67faa82
 
     var x = d3version4.scaleLinear()
         .range([0, width]);
@@ -174,8 +179,9 @@ function set_scatter(){
           .attr("dy", ".35em")
           .style("text-anchor", "end")
           .text(function(d) { if(d==-0.27){return ddAll_min} else if(d == 0.5){return ddAll_max} else if(d == 0){return math.round(ddAll_mean)}return ""});
+
     //--------------------------------------------------------------------------------------------
-    
+
           svg.append("g").attr("class", "dot_wrapper")
        f = svg.select(".dot_wrapper")
        v = f.selectAll(".dot")
@@ -210,8 +216,9 @@ function set_scatter(){
 
                     // revert circles to initial style
                     circles.attr("class", "dotdot");
-                    circles.attr("r", 7);
 
+                    circles.attr("r", 7);
+					
                     var brush_coords = d3version4.brushSelection(this);
 
                     // style brushed circles
@@ -236,6 +243,7 @@ function set_scatter(){
                 d3version4.select(this).call(brush.move, null);
 
                 var d_brushed =  d3version4.selectAll(".brushed").data();
+
                 d3version4.selectAll(".brushed").attr("r",10);
                 // populate table if one or more elements is brushed
                 if (d_brushed.length > 0) {
