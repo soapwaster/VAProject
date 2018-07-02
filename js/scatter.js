@@ -151,19 +151,17 @@ function set_scatter(){
     svg.append("g")
           .attr("class", "y axis")
           .call(yAxis)
-                
-    //Legend style
 
-    var legend = svg.selectAll(".legend")
-          .data([-0.27, -0.20, -0.1, -0.05, 0, 0.05, 0.1, 0.4, 0.5])
+   /* var legend = svg.selectAll(".legend")
+          .data(color.domain())
           .enter().append("g")
           .attr("class", "legend")
-          .attr("transform", function(d, i) { return "translate(0," + i * 10 + ")"; });
+          .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
 
       legend.append("rect")
-          .attr("x", width - 8)
-          .attr("width", 10)
-          .attr("height", 10)
+          .attr("x", width - 18)
+          .attr("width", 18)
+          .attr("height", 18)
           .style("fill", color);
 
       legend.append("text")
@@ -171,9 +169,7 @@ function set_scatter(){
           .attr("y", 9)
           .attr("dy", ".35em")
           .style("text-anchor", "end")
-          .text(function(d) { if(d==-0.27){return "low"} else if(d == 0.5){return "high"} return ""});
-    //--------------------------------------------------------------------------------------------
-    
+          .text(function(d) { return d; });*/
           svg.append("g").attr("class", "dot_wrapper")
        f = svg.select(".dot_wrapper")
        v = f.selectAll(".dot")
@@ -208,7 +204,6 @@ function set_scatter(){
 
                     // revert circles to initial style
                     circles.attr("class", "dotdot");
-                    circles.attr("r", 4.5);
 
                     var brush_coords = d3version4.brushSelection(this);
 
@@ -234,7 +229,6 @@ function set_scatter(){
                 d3version4.select(this).call(brush.move, null);
 
                 var d_brushed =  d3version4.selectAll(".brushed").data();
-                d3version4.selectAll(".brushed").attr("r",7);
                 // populate table if one or more elements is brushed
                 if (d_brushed.length > 0) {
                     s = 0
