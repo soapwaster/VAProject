@@ -6,7 +6,7 @@ d3version3.tsv(PCA_FILE, function(error, data) {
 	// Define the sizes and margins for our canvas.
 	var margin = {top: 20, right: 20, bottom: 30, left: 40},
 		width = 570 - margin.left - margin.right,
-    	height = 450 - margin.top - margin.bottom;
+    	height = 500 - margin.top - margin.bottom;
 		// Cast my values as numbers and determine ranges.
 	var minmax = {P1: {min:0, max:0}, P2: {min:0, max:0}}
 	data.forEach(function(d) {
@@ -122,7 +122,7 @@ d3version3.tsv(PCA_FILE, function(error, data) {
 
 d3version3.csv(PARALLEL_COORDINATES_FILE, function(error, flights) {
 	var margin = {top: 30, right: 10, bottom: 10, left: 10},
-	width = 950 - margin.left - margin.right,
+	width = 965 - margin.left - margin.right,
 	height = 400 - margin.top - margin.bottom;
 
 	var x = d3version3.scale.ordinal().rangePoints([0, width], 1),

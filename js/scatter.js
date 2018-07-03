@@ -103,7 +103,7 @@ function set_scatter(){
     
     var margin = {top: 20, right: 40, bottom: 30, left: 60},
         width = 550 - margin.left - margin.right,
-        height = 360 - margin.top - margin.bottom;
+        height = 440 - margin.top - margin.bottom;
 
 
     var x = d3version4.scaleLinear()
@@ -133,7 +133,17 @@ function set_scatter(){
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
     
-      var details = d3version4.select("#scatter-div").append("div").style("display","inline-block").style("width","100px").style("height","300px").style("font-size","14px").attr("id","details").style("vertical-align","top").style("margin-top","30px").append("span")
+      var details = d3version4.select("#scatter-div")
+		.append("div")
+		.style("display","inline-block")
+		.style("width","100px")
+		.style("height","300px")
+		.style("font-size","14px")
+		.attr("id","details")
+		.style("vertical-align","top")
+		.style("margin-top","30px")
+		.style("text-align", "left")
+		.append("span")
     
    
 
@@ -161,7 +171,7 @@ function set_scatter(){
           .data([-0.27, -0.20, -0.1, -0.05, 0, 0.05, 0.1, 0.2, 0.5])
           .enter().append("g")
           .attr("class", "legend")
-          .attr("transform", function(d, i) { return "translate(0," + i * 10 + ")"; });
+          .attr("transform", function(d, i) { return "translate(0," + (i * 10 + 16)+ ")"; });
 
       legend.append("rect")
           .attr("x", width )
@@ -248,7 +258,7 @@ function set_scatter(){
                         
                         s = s + d_brushed[i]
                     }
-                    details.html("Flights selected: "+s+" <br/> Percentage: "+((s/ddAll_sum)*100).toFixed(3)+"%")
+                    details.html("Flights selected: <br/>"+s+" <br/> <br/> Percentage: <br/>"+((s/ddAll_sum)*100).toFixed(3)+"%")
                 } else {
                     clearTableRows();
                 }
