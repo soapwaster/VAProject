@@ -122,7 +122,7 @@ d3version3.tsv(PCA_FILE, function(error, data) {
 
 d3version3.csv(PARALLEL_COORDINATES_FILE, function(error, flights) {
 	var margin = {top: 30, right: 10, bottom: 10, left: 10},
-	width = 955 - margin.left - margin.right,
+	width = 965 - margin.left - margin.right,
 	height = 400 - margin.top - margin.bottom;
 
 	var x = d3version3.scale.ordinal().rangePoints([0, width], 1),
