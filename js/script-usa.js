@@ -230,7 +230,7 @@ patty = svg.selectAll("path")
 	.style("stroke-width", "1")
     .on("click", handleMouseOver)
     
-     switchTo("leave",6)
+     switchTo("leave",1)
     
     
 

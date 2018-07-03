@@ -113,7 +113,7 @@ function set_scatter(){
         .range([height, 0]);
 
     var color = d3version4.scaleQuantile()
-          .domain([(ddAll_min - ddAll_mean) / ddAll_std,((ddAll_max - ddAll_mean) / ddAll_std)-6.8]) .range(['#91c1db','#88b9d7','#7eb2d3','#5594c4','#3c86bc','#2c7fb8','#2b74a7','#2a6997','#285e86','#213f58','#1e3549','#1a2b3b','#16222e','#121921','#0b0f14','#000000']);
+          .domain([(ddAll_min - ddAll_mean) / ddAll_std,((ddAll_max - ddAll_mean) / ddAll_std)-6.8]) .range(['#91c1db','#88b9d7','#7eb2d3','#5594c4','#2c7fb8','#2b74a7','#2a6997','#285e86','#213f58','#1e3549','#1a2b3b','#000000']);
     var xAxis = d3version4.axisBottom(x).tickFormat(function(d, i) {
       var inData = dataa2.filter(function (v) { return +v.sepalLength === d })
       return inData.length ? inData[0].name : d
