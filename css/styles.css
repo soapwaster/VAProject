@@ -28,7 +28,13 @@ body {
 .foregrounding{
     fill: none;
     stroke: orange !important;
-    stroke-width: 4px !important;
+    stroke-width: 3px !important;
+}
+.backg{
+    fill: none;
+    shape-rendering: crispEdges;
+    stroke: #ddd !important;
+    stroke-width: 1px !important;
 }
 
 .brush .extent {

@@ -244,11 +244,13 @@ for(i in jsonStates){
 function handleMouseOver(e){
     //var gto = d3version3.selectAll(".bar").filter(function(d){ return jsonStates[d.s] == e.properties.name }).style("fill","black")
     if(selected[e.properties.name]){
-        var par_state = d3version4.selectAll("#parallel-div path").filter(function(d){ return jsonStates[d.ORIGIN_STATE_ABR] == e.properties.name }).attr("class","foreground")
+        d3version4.selectAll("#parallel-div path").attr("class","foreground")
+        //var par_state = d3version4.selectAll("#parallel-div path").filter(function(d){ return jsonStates[d.ORIGIN_STATE_ABR] == e.properties.name }).attr("class","foreground")
         selected[e.properties.name] = false
     }
     else{
-        d3version4.selectAll("#parallel-div path").attr("class","foreground")
+        d3version4.selectAll("#parallel-div path").attr("class","backg")
+        //d3version4.selectAll("#parallel-div path").attr("class","foreground")
         for(i in jsonStates){
             selected[jsonStates[i]] = false
         }   
@@ -257,6 +259,30 @@ function handleMouseOver(e){
     }
     
 }
+
+//Legend style
+    var zz = d3version4.scaleQuantile().domain([-0.27, -0.20, -0.1, -0.05, 0, 0.05, 0.1, 0.2, 0.5]).range(['#2166ac','#61a3cc','#bddaea','#f7f7f7','#fbc9b0','#e1785e','#b2182b'])
+    var legend = svg.selectAll(".legend")
+          .data([-0.27, -0.20, -0.1, -0.05, 0, 0.05, 0.1, 0.2, 0.5])
+          .enter().append("g")
+          .attr("class", "legend")
+          .attr("transform", function(d, i) { return "translate(0," + ((i * 10) + 300) + ")"; });
+
+      legend.append("rect")
+          .attr("x", width -8 )
+          .attr("width", 10)
+          .attr("height", 10)
+          .style("fill", zz);
+
+      legend.append("text")
+          .attr("x", width - 10)
+          .attr("y", 5)
+          .attr("dy", ".35em")
+          .style("text-anchor", "end")
+          .text(function(d) {if(d==-0.27){return "Low"} else if(d == 0.5){return "High"} else if(d == 0){return "0"}return ""});
+
+    //--------------------------------------------------------------------------------------------
+
 // Modified Legend Code from Mike Bostock: http://bl.ocks.org/mbostock/3888852
 /*var legend = d3version3.select("body").append("svg")
       			.attr("class", "legend")
