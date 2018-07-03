@@ -107,11 +107,16 @@ d3version3.tsv(PCA_FILE, function(error, data) {
               .attr("y", 5)
               .attr("dy", ".35em")
               .style("text-anchor", "end")
-              .text(function(d) { if(d==1){return "Arrival delay"} else if(d == 2){return "Departure delay"} else if(d == 3){return "Arr/Dep delay"}return ""});
-
-        //--------------------------------------------------------------------------------------------
-
-
+              .text(function(d) { 
+				  if (d==1){
+					  return "Departure only delay";
+				  } else if(d == 2) {
+					  return "Both arr/dep delay";
+				  } else if(d == 3) {
+					  return "Arrival only delay";
+				  }
+				  return "";
+			  });
 });
 
 
