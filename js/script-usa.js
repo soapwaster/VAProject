@@ -17,7 +17,7 @@ var months_names = [
     .min(1)
     .max(12)
     .step(1)
-    .width(500)
+    .width(550)
 	.tickFormat(function(v) { return months_names[v-1]; })
     .on('onchange', month => {
 	    //load month data
@@ -54,7 +54,7 @@ var months_names = [
     .attr("width", width)
     .attr("height", 100)
     .append("g")
-    .attr("transform", "translate(30,30)");
+    .attr("transform", "translate(45,30)");
   g.call(slider3);
 
 /******************************/
