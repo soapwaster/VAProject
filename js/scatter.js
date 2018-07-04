@@ -1,4 +1,4 @@
-    var ddMonthsState = []    
+    var ddMonthsState = {}    
     var ddAll = []
     var j_inc = -1;
     var ddAll_std = 0
@@ -8,7 +8,8 @@
     
     function load_files(i){
         if(i==howmany){
-            get_dist_delay_all()
+            get_ddAll()
+            //get_dist_delay_all()
             return
         }
         ddMonthsState[i] = []
@@ -37,7 +38,7 @@
         })
     }
     
-    load_files(1)
+    load_files(13)
     
     function get_dist_delay_all(){
         for(i = 1;i<howmany;i++){
@@ -57,7 +58,13 @@
             }
         }
         set_scatter()
-    }    
+    }  
+
+    function get_ddAll(){
+        matrixa = JSON.parse("[null,[556761,42442,21225,13324,9212,6639,4917,3864,3047,2388,1870,1600,7503],[1057290,86394,44055,26849,18068,12864,9312,7276,5629,4333,3367,2692,12562],[899222,68983,35149,21375,14413,10539,7705,5866,4615,3570,2825,2185,10698],[731832,59477,29916,18134,12434,8820,6482,4811,3726,3026,2325,1835,8435],[495943,42284,21966,13386,9244,6579,5018,3839,3024,2325,1854,1448,6655],[217502,18442,8801,5219,3302,2232,1741,1298,946,718,540,409,1844],[240541,21406,10479,6110,3947,2718,2086,1455,1127,870,738,571,2588],[121474,12117,5679,3167,2010,1317,1013,704,586,426,327,292,1027],[83051,8174,4029,2369,1557,1123,792,637,489,408,326,218,1034],[140628,13523,6759,4022,2643,1917,1492,1044,824,642,523,445,1811],[100903,10635,5221,3046,1996,1423,1105,876,677,551,445,345,1703]]")
+        ddAll = matrixa
+        set_scatter()
+    }
     
 function set_scatter(){
     
@@ -203,7 +210,7 @@ function set_scatter(){
           .enter()
           .append("circle")
           .attr("class", "dotdot")
-          .attr("r", 7)
+          .attr("r", 9)
                 .attr("cx", function(d,i) { 
                                     if(i == 0){
                                         j_inc++;
@@ -223,7 +230,7 @@ function set_scatter(){
                     // revert circles to initial style
                     circles.attr("class", "dotdot");
 
-                    circles.attr("r", 7);
+                    circles.attr("r", 9);
 					
                     var brush_coords = d3version4.brushSelection(this);
 
@@ -250,7 +257,7 @@ function set_scatter(){
 
                 var d_brushed =  d3version4.selectAll(".brushed").data();
 
-                d3version4.selectAll(".brushed").attr("r",10);
+                d3version4.selectAll(".brushed").attr("r",12);
                 // populate table if one or more elements is brushed
                 if (d_brushed.length > 0) {
                     s = 0

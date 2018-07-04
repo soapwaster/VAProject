@@ -32,7 +32,7 @@ body {
 .background path {
   fill: none;
   stroke: #ddd;
-  shape-rendering: crispEdges;
+  
 }
 
 .foreground path {
@@ -43,13 +43,14 @@ body {
 .foregrounding{
     fill: none;
     stroke: orange !important;
-    stroke-width: 3px !important;
+    stroke-width: 1px !important;
 }
 .backg{
     fill: none;
+    display: none;
     shape-rendering: crispEdges;
     stroke: #ddd !important;
-    stroke-width: 1px !important;
+    z-index: -4;
 }
 
 .brush .extent {
