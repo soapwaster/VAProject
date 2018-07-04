@@ -2,7 +2,9 @@
 \usepackage{comment} % enables the use of multi-line comments (\ifx \fi)
 \usepackage{fullpage} % changes the margin
 \usepackage{enumitem}
+\usepackage{graphicx}
 \usepackage{hyperref}
+\usepackage{wrapfig}
 
 
 \begin{document}
@@ -70,9 +72,10 @@ everywhere the number of flights is below the average, on the contrary in August
 the average probably highlighting the departures due to holidays. In July the same observations hold, and 
 in particular northern countries tend to have higher increase of flights. An exception to the summer 
 excitement is Florida, probably because it is one of the destination for holiday travels and local
-population usually stays in the country.
-
-
+population usually stays in the country.\\
+\begin{figure}[h]
+\includegraphics[scale=0.7]{usamapbar.PNG}
+\end{figure}\\
 \paragraph*{Delays}
 The other visualization elements we devised concern flights delays.\\
 We created three views:
@@ -83,13 +86,30 @@ We created three views:
 \end{itemize}
 \subparagraph{PCA plot} This plot displays in 2D the records sampled in the dataset. In order to project them in 2D we applied PCA via a python script.\\
 Out of all the sampled elements we took only the ones that had some delay at the arrival or at the departure.\\
-Once plotted we categorized them in three classes (\texttt{Departure delay only, Arrival delay only, Both Arrival/Departure delay}).\\
-An interesting result, was to notice that flights form clusters, and thus there is a good chance that they are close each other also in higher dimension.
-\subparagraph{Parallel Coordinates}The same data used in the PCA plot were used in the parallel coordinates
-
-\paragraph{Why using a scatter plot ?} To display the relationship between flight delays and their distances, we decided to use a scatter plot where on the x-axis there are all the possible intervals of distance, while on the y-axis the intervals for the delays. Each cell represents the \texttt{number of flights whose distances and delays lie in that intervals}.\\
+\begin{wrapfigure}{l}{0.54\textwidth}
+\includegraphics[scale=0.7]{pca.PNG}
+\end{wrapfigure}\\ 
+Once plotted we categorized them in three classes (\texttt{Departure delay only, Arrival delay only,\\ Both Arrival/Departure delay}).\\
+An interesting result, was to notice that flights form clusters, and thus there is a good chance that they are close each other also in higher dimensions.\\ \\ \\ \\ \\
+\subparagraph{Parallel Coordinates}The same data used in the PCA plot were used in the parallel coordinates. PC are a standard method to visualize high dimensions on a 2D environment. For this view we decided to use almost only numeric features that concerned delays. This was made because they were the only numeric values available.\\
+\begin{figure}[h]	
+\centering
+\includegraphics[scale=0.7]{pc.PNG}
+\end{figure}\\
+To give a better user-experience, axis can be moved around and interval of interests can be selected.\\
+This view is also coordinated with the USA map. Whenever we want to know what are the flights departed from one of the states, we can filter those by clicking on the state in the map. The lines regarding these flights will be highlighted in orange.
+\subparagraph{DD scatter} The last view in the second group is the DD scatter. It displays relationships between flight delays and their distances.
+We decided to use a scatter plot where on the x-axis there are all the possible intervals of distance, while on the y-axis the intervals for the delays. Each cell represents the \texttt{number of flights whose distances and delays lie in that intervals}.\\
 It is colored according to a heatmap, in order to distinguish the quantities.\\ \\
-We opted this, over a correlation matrix for two main reasons. First, it works on two different features and then it is not symmetric. A correlation matrix is symmetric.\\
+\begin{figure}[h]	
+\centering
+\includegraphics[scale=0.7]{ddscat.PNG}
+\end{figure}\\
+Group of point can be selected, and the exact number, together with the percentage out of all flights they occupy is displayed. This is useful in order to "query" the dataset. For example, thanks to this view, we noticed that during the whole year of 2017, the number of flights that did not delayed more than 15 minutes is the 81\%, while those for which the delay was greather than \texttt{three hours} are just the 1\%, that means about 60.000 flights.\\
+Another data extracted thanks to this view, is that most of the flights tend to cover about 500 - 1000 miles.\\\\
+Lastly we notices that the delays tend to decrease with the increase of the flight's distance. 
+\paragraph{Why using a scatter plot ?}
+We opted for this, over a correlation matrix for two main reasons. First, it works on two different features and then it is not symmetric. A correlation matrix is symmetric.\\
 Second reason, we wanted it to brushable, to have some interaction with it. In a correlation matrix this would be possible, but in a limited way
 
 
