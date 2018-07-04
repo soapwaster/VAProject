@@ -69,7 +69,7 @@ drew a map of the USA and colored each state according to the number of flights 
 with a heat map. The color of each state in this case is independent from the color of the other states,
 it only depends on the mean of flights for that state during the year. A \emph{hot} color tells that in
 that month the number of flights was higher than the average while a \emph{cold} color that the number of
-flights was respectively low. A slider under the map allows the user to change the month under
+flights was respectively low. In particular, the domain of the color scale goes from $-2stdDev(state)$ to $2stdDev(state)$.\\ A slider under the map allows the user to change the month under
 consideration. On the other hand, in order to visualize how the number of flights differs from state to 
 state in a quantitative fashion we display a bar chart with a bar for each state whose height is
 proportional to the number flights in that state. When you click on a bar the bar becomes red and a line
