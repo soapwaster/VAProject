@@ -258,17 +258,20 @@ for(i in jsonStates){
 function handleMouseOver(e){
     //var gto = d3version3.selectAll(".bar").filter(function(d){ return jsonStates[d.s] == e.properties.name }).style("fill","black")
     if(selected[e.properties.name]){
-        d3version4.selectAll("#parallel-div path").attr("class","foreground")
+        d3version4.selectAll("#parallel-div .background path").attr("class","foreground")
+        d3version4.selectAll("#parallel-div .foreground path").attr("class","foreground")
         //var par_state = d3version4.selectAll("#parallel-div path").filter(function(d){ return jsonStates[d.ORIGIN_STATE_ABR] == e.properties.name }).attr("class","foreground")
         selected[e.properties.name] = false
     }
     else{
-        d3version4.selectAll("#parallel-div path").attr("class","backg")
+        d3version4.selectAll("#parallel-div .background path").attr("class","backg")
+        d3version4.selectAll("#parallel-div .foreground path").attr("class","backg")
         //d3version4.selectAll("#parallel-div path").attr("class","foreground")
         for(i in jsonStates){
             selected[jsonStates[i]] = false
         }   
-        var par_state = d3version4.selectAll("#parallel-div path").filter(function(d){ return jsonStates[d.ORIGIN_STATE_ABR] == e.properties.name }).attr("class","foregrounding")
+        var par_state = d3version4.selectAll("#parallel-div .background path").filter(function(d){ return jsonStates[d.ORIGIN_STATE_ABR] == e.properties.name }).attr("class","foregrounding")
+        var par_state = d3version4.selectAll("#parallel-div .foreground path").filter(function(d){ return jsonStates[d.ORIGIN_STATE_ABR] == e.properties.name }).attr("class","foregrounding")
         selected[e.properties.name] = true
     }
     
