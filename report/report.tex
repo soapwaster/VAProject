@@ -16,15 +16,55 @@ TA: Marco Angelini \hfill Davide Spallaccini - 1642557
 \section*{Flights And Delays In The United States}
 
 \paragraph{Introduction}
-
+The airline industry is one of the fields that continuously produces a large amount of complex data
+regarding the large number of flights that take place every day. In this work we concentrate only on
+flights of a single year in the United States. Even considering a single nation and a single year the
+number of flights is really high, so in this work we aim at providing a visualization of this data that
+helps in better understanding patterns in the number of flights in the different states and in the 
+delays that were recorded across time.
 
 \paragraph*{Data}
+We got our data from the United States Department of Transportation, and in particular from the 
+Bureau of Transportation Statistics (BTS) website. As the independent statistical agency within the
+Department of Transportation (DOT), the Bureau of Transportation Statistics (BTS) is a politically
+objective supplier of trusted and statistically sound baseline, contextual, and trend information used
+to shape transportation policy, investments, and research across the U.S. and abroad. BTS is the
+preeminent source of statistics on commercial aviation, and transportation economics.
+In particular we used the On-Time Performance table (available at ...) under the Airline and Airports
+subsection of the website. This table contains on-time arrival data for non-stop domestic flights by
+major air carriers, and provides such additional items as departure and arrival delays, origin and
+destination airports, flight numbers, scheduled and actual departure and arrival times, cancelled or
+diverted flights, taxi-out and taxi-in times, air time, and non-stop distance.
 
+
+[Preprocessing]...
 
 \paragraph*{State Patterns}
+The first visualization elements we are going to describe have the goal to display for each state the 
+amount of airline departures. In particular we want to visualize how many flights leave each state during
+the different months of the year and how these numbers vary from state to state. For the first task we
+drew a map of the USA and colored each state according to the number of flights for the selected month
+with a heat map. The color of each state in this case is independent from the color of the other states,
+it only depends on the mean of flights for that state during the year. A \emph{hot} color tells that in
+that month the number of flights was higher than the average while a \emph{cold} color that the number of
+flights was respectively low. A slider under the map allows the user to change the month under
+consideration. On the other hand, in order to visualize how the number of flights differs from state to 
+state in a quantitative fashion we display a bar chart with a bar for each state whose height is
+proportional to the number flights in that state. When you click on a bar the bar becomes red and a line
+appears cutting all the other bars at the height of the selected one, highlighting the differences; if 
+then you over the mouse on other bars the difference number (positive or negative) is shown.
+
+We found interesting that some patterns appear really clear in the map, for example in February almost
+everywhere the number of flights is below the average, on the contrary in August this number is far over
+the average probably highlighting the departures due to holidays. In July the same observations hold, and 
+in particular northern countries tend to have higher increase of flights. An exception to the summer 
+excitement is Florida, probably because it is one of the destination for holiday travels and local
+population usually stays in the country.
 
 
 \paragraph*{Delays}
+The other visualization elements we devised concern flights delays.
+
 
 \paragraph*{Conclusions}
 (Slides for this project are available \href{https://docs.google.com/presentation/d/1T_p1oarqUuNt5APTaf7IwTJEzUDJC0CoNfJKHdak0so/edit?usp=sharing}{here}).
