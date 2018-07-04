@@ -38,7 +38,7 @@ major air carriers, and provides such additional items as departure and arrival 
 destination airports, flight numbers, scheduled and actual departure and arrival times, cancelled or
 diverted flights, taxi-out and taxi-in times, air time, and non-stop distance.
 \\
-\\
+
 This dataset is very large and contains more than \texttt{5 millions} records of flights in the United
 States just for 2017. 
 The features we considered for the analysis and visualization will have the following symbols and
@@ -90,9 +90,7 @@ population usually stays in the country.\\
 \\
 
 \paragraph*{Delays}
-The other visualization elements we devised concern flights delays.
-\\
-This data is displayed in three views:
+The other visualization elements we devised concern flights delays. This data is displayed in three views:
 \begin{itemize}
 \item A plot representing the results of a PCA projection of flights.
 \item Parallel Coordinates with the attributes mentioned above.
@@ -107,7 +105,8 @@ at random for each month a certain amount of data and used them for the visualiz
 the flights would have been too dense and it would have been difficult to distinguish points in the
 plot. Moreover the size of the data would have required a considerable amount of computation time
 on a Javascript engine and would have result in a bad delay experience for the user.
-\\
+
+
 Since we were concentrating on flights delays we selected only the flights that experienced some delay
 at the arrival, at the departure or both.
 \\
@@ -121,7 +120,7 @@ together in the final space as you can see in the figure. So we divided the flig
 ones that experienced a delay only during the departure, the ones that only arrived late, and the ones
 that both leaved and arrived late.
 \\
-\\
+
 As you can notice flights groups form clusters, and thus there is a good chance that
 they are close each other also in higher dimensions.
 \clearpage
@@ -135,12 +134,13 @@ chose these were the only non-categorical values available.
 \begin{figure}[h]	
 \centering
 \includegraphics[scale=0.7]{pc.PNG}
-\end{figure}\\
+\end{figure}
+\\
 To give a better user-experience, axes can be moved around and reordered while maintaining a constant 
 distance. To provide further user interaction in each of the axes the user can brush with the mouse over
 an interval of values for that axis, as a results the lines in that interval are put in foreground and
 the rest of the flights changes to a light grey color and is put in background.
-\\
+
 This view is also coordinated with the USA map. Indeed the user can click on a state and as a 
 consequence in the parallel coordinated view only the flights that left that state are highlighted in an
 orange color and put in foreground.
@@ -159,12 +159,11 @@ insights.
 \centering
 \includegraphics[scale=0.7]{ddscat.PNG}
 \end{figure}
-\\
-Moreover to give further details to the user a group of point can be selected, and the exact number,
-together with the percentage out of all flights they occupy is displayed. This is useful in order to
-"query" the dataset. For example, thanks to this view, we noticed that during the whole year of 2017,
-the number of flights that did not delayed more than 15 minutes is the 81\%, while those for which the
-delay was greater than \texttt{three hours} are just the 1\%, that means about 60.000 flights.
+Moreover, to give further details to the user, a group of points can be selected, and the exact number,
+together with the percentage out of all flights the selection includes is displayed. This is useful in
+order to "query" the dataset. For example, thanks to this view, we noticed that during the whole year of
+2017, the number of flights that did not delayed more than 15 minutes is the 81\%, while those for which
+the delay was greater than \texttt{3 hours} are only the 1\%, that is however about 60'000 flights.
 \\
 Other data extracted thanks to this view, is that most of the flights tend to cover about 500 - 1000
 miles (as expected).
@@ -181,7 +180,20 @@ would be possible, but in a limited way
 
 
 \paragraph*{Conclusions}
+In this work we devised a simple visual environment with the goal of displaying the number of flights 
+and the entity of delays in the different states in the USA in a time interval of a year. We used a map
+of the States coordinated with a bar chart to visualize across the various months the amounts of flights.
+As for the delays we considered different numerical attributes of the flights especially regarding the
+amounts of delay due to the possible different causes and displayed the data qualitatively in a PCA plot
+and in the details in a parallel coordinates view. Finally we devised a novel scatter plot with colored
+points in order to visualize the correlation between the distance of the origin and destination airports
+and the total amount of delay.
 
+As for future work we think it may be useful to add the possibility of loading the data for different
+years if the user requests it; then it might be interesting to highlight clusters in the PCA projection
+with some cluster detection algorithm besides highlighting the information we already provided. At the 
+same time it would be useful to ask users some feedback in order to add the small details that would
+make the interaction more intuitive and smooth.
 (Slides for this project are available 
 \href{https://docs.google.com/presentation/d/1T_p1oarqUuNt5APTaf7IwTJEzUDJC0CoNfJKHdak0so/edit?usp=sharing}{here}).
 
