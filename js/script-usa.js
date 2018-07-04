@@ -298,6 +298,18 @@ function handleMouseOver(e){
           .style("text-anchor", "end")
           .text(function(d) {if(d==-0.27){return "Low"} else if(d == 0.5){return "High"} else if(d == 0){return "0"}return ""});
 
+    svg.selectAll(".legendstuff").data(["difference wrt annual mean"]).enter()
+        .append("g")
+        .attr("class", "legend")
+        .attr("transform", function(d, i) { return "translate(635," + -200 + ") rotate(90)"; })
+        .append("text")
+        .attr("x", width - 45)
+        .attr("y", 5)
+        .attr("dy", ".35em")
+        .style("text-anchor", "end")
+        .text(function(d) {return d});
+
+
     //--------------------------------------------------------------------------------------------
 
 // Modified Legend Code from Mike Bostock: http://bl.ocks.org/mbostock/3888852
