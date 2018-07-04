@@ -163,27 +163,36 @@ insights.
 \includegraphics[scale=0.7]{ddscat.PNG}
 \end{figure}
 \\
-Moreover to give further details to the user a group of point can be selected, and the exact number,
-together with the percentage out of all flights they occupy is displayed. This is useful in order to
-"query" the dataset. For example, thanks to this view, we noticed that during the whole year of 2017,
-the number of flights that did not delayed more than 15 minutes is the 81\%, while those for which the
-delay was greater than \texttt{three hours} are just the 1\%, that means about 60.000 flights.
+Moreover, to give further details to the user, a group of points can be selected, and the exact number,
+together with the percentage out of all flights the selection includes is displayed. This is useful in
+order to "query" the dataset. For example, thanks to this view, we noticed that during the whole year of
+2017, the number of flights that did not delayed more than 15 minutes is the 81\%, while those for which
+the delay was greater than \texttt{3 hours} are only the 1\%, that is however about 60'000 flights.
 \\
 Other data extracted thanks to this view, is that most of the flights tend to cover about 500 - 1000
 miles (as expected).
 \\
 \\
-Lastly we notices that the delays tend to decrease with the increase of the flight's distance. 
+In the end we notice that the delays tend to decrease with the increase of the flight distance.
 \paragraph{Why using this kind of plot?}
-We opted for this, over a correlation matrix for two main reasons. First, it works on two different
-features and then it is not symmetric. A correlation matrix is symmetric.
+We opted for this over a correlation matrix for two main reasons. First, it works on two different
+features and it is not symmetric, while usually a correlation matrix is symmetric.
 \\
 Second reason, we wanted it brushable, to have some interaction with it. In a correlation matrix this
-would be possible, but in a limited way
-
+would be possible, but in a less intuitive way.
 
 
 \paragraph*{Conclusions}
+In this work we devised a simple visual environment with the goal of displaying the number of flights 
+and the entity of delays in the different states in the USA in a time interval of a year. We used a map
+of the States coordinated with a bar chart to visualize across the various months the amounts of flights.
+As for the delays we considered different numerical attributes of the flights especially regarding the
+amounts of delay due to the possible different causes and displayed the data qualitatively in a PCA plot
+and in the details in a parallel coordinates view. Finally we devised a novel scatter plot with colored
+points in order to visualize the correlation between the distance of the origin and destination airports
+and the total amount of delay.
+
+As for future work we think it may be useful to add ...
 
 (Slides for this project are available 
 \href{https://docs.google.com/presentation/d/1T_p1oarqUuNt5APTaf7IwTJEzUDJC0CoNfJKHdak0so/edit?usp=sharing}{here}).
