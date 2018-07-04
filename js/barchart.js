@@ -22,7 +22,8 @@ var svgg = d3version4.select("#barchart_div").append("svg")
     .attr("width", bar_width + bar_margin.left + bar_margin.right)
     .attr("height", bar_height + bar_margin.top + bar_margin.bottom)
   .append("g")
-    .attr("transform", "translate(" + bar_margin.left + "," + bar_margin.top + ")");
+    .attr("transform", "translate(" + bar_margin.left + "," + bar_margin.top + ")")
+    //.on("mouseclick",removeAllProp)
     
 var bar_div = d3version4.select("body").append("div")
     .attr("class", "tooltip")
@@ -112,9 +113,18 @@ function loadDataMonth(month){
     
 }
 
+function removeAllProp(e){
+    svgg.selectAll("line").remove()
+    svgg.selectAll("rect")
+      .style("fill", function(d){
+        return "#6394ba"
+    })
+}
+
 $(document).ready(function() {
  $("rect").click(function(e){
-     
+    cls = $(e.target).attr("class")
+    if(cls != "overlay"){
     svgg.selectAll("line").remove()
     svgg.selectAll("rect")
       .style("fill", function(d){
@@ -139,9 +149,8 @@ $(document).ready(function() {
       .style("fill", function(d){
         return "rgb(202, 75, 65)"
     })
-    
+    }
 })  
-    
 $("rect").mouseover(function(e){
      
     if(selectedBarHeight <= 0) return 

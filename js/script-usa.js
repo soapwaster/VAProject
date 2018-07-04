@@ -229,12 +229,26 @@ patty = svg.selectAll("path")
 	.style("stroke", "#fff")
 	.style("stroke-width", "1")
     .on("click", handleMouseOver)
+    .on("mouseover", highlightBar)
+    .on("mouseout", cancelHighlightBar)
     
      switchTo("leave",1)
     
     
 
 });
+
+function highlightBar(e){
+    selected_bar = d3version4.selectAll(".bar").filter(function(d){ return jsonStates[d.s] == e.properties.name})
+    selected_bar.style("fill", "rgb(202, 75, 65)")
+    
+}
+
+function cancelHighlightBar(e){
+    selected_bar = d3version4.selectAll(".bar").filter(function(d){ return jsonStates[d.s] == e.properties.name})
+    selected_bar.style("fill", "rgb(99, 148, 186)")
+    
+}
 
 var selected = [];
 for(i in jsonStates){
