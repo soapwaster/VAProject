@@ -23,7 +23,6 @@ var months_names = [
 	    //load month data
 	    selectedBarHeight = 0
 	    loadDataMonth(month) //e.target.value)
-    	console.log(month)
 	    //fill it
 	    svg.selectAll("path")
 		.attr("d", path)
@@ -52,7 +51,7 @@ var months_names = [
 
   var g = d3version4.select("#slider_div").append("svg")
     .attr("width", width)
-    .attr("height", 100)
+    .attr("height", 80)
     .append("g")
     .attr("transform", "translate(45,30)");
   g.call(slider3);

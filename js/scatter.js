@@ -110,7 +110,7 @@ function set_scatter(){
     
     var margin = {top: 20, right: 40, bottom: 30, left: 60},
         width = 550 - margin.left - margin.right,
-        height = 440 - margin.top - margin.bottom;
+        height = 439 - margin.top - margin.bottom;
 
 
     var x = d3version4.scaleLinear()
