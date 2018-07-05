@@ -301,7 +301,7 @@ function handleMouseOver(e){
     svg.selectAll(".legendstuff").data(["difference wrt annual mean"]).enter()
         .append("g")
         .attr("class", "legend")
-        .attr("transform", function(d, i) { return "translate(635," + -200 + ") rotate(90)"; })
+        .attr("transform", function(d, i) { return "translate(635," + -200 + ") rotate(90) "; })
         .append("text")
         .attr("x", width - 45)
         .attr("y", 5)

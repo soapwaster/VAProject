@@ -177,8 +177,13 @@ features and then it is not symmetric. A correlation matrix is symmetric.
 Second reason, we wanted it brushable, to have some interaction with it. In a correlation matrix this
 would be possible, but in a limited way
 
+\paragraph{Discarded designs}
+During the development of this application, many other views have been taken into consideration, but at the end they were dropped because of the lack of significant insights provided by the data.\\
+One of the first view to be dropped has been a \texttt{Time Series Chart} showing for each month of the year, the total amount of departed flights. Even though this revealed to be extremely interesting when focusing our attention state by state on the usa map, this did not come out as interesting on the time series chart. The differences were so small, it did not make much sense to include this static view.\\ \\
+This view, instead, was a variation of the later used bar chart. Infact, it initially started as a \texttt{stacked bar chart}, where one layer was supposed to show the number of flights that departed from that state, in that particular month, while the other had the purpose to show the arrived flights. We immediately noticed that they were almost identical, probably because every flight has also a return one.\\ \\
+Lastly, we dropped the idea of implementing a kind of \texttt{correlation matrix} (or a \texttt{chord diagram}) to show for each pair of states, the number of departed flights, in order to understand what are the main routes. This still is a nice idea, however it was not feasible due to the lack of space. A $50\times50$ matrix is too big to be shown on a screen that has other 4 views. A chord diagram on the other hand would look too caothic It may be interesting to be shown independently.
 
-
+\clearpage
 \paragraph*{Conclusions}
 In this work we devised a simple visual environment with the goal of displaying the number of flights 
 and the entity of delays in the different states in the USA in a time interval of a year. We used a map
