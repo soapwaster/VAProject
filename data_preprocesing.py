@@ -77,5 +77,5 @@ df_par = df_par.reset_index()
 with open("FDB/1k-6num-attrs.csv", "w") as f:
     df_par.to_csv(f, index=False, columns=features[:-1])
     
-# save_pca(df_pca.loc[:, features[:-2]])
+save_pca(df_pca.loc[:, features[:-2]])
 
